@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <form [formGroup]="form" (ngSubmit)="onSearch()">
+    <div class="row">
+      <div class="col-sm-5">
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Nombre"
+          class="form-control"
+        />
+      </div>
+      <div class="col-sm-5">
+        <input
+          type="text"
+          formControlName="email"
+          placeholder="Email"
+          class="form-control"
+        />
+      </div>
+      <div class="col-sm-2 FullContent">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="row mt-5">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index">
+          <td>
+            <p class="text-break">{{ user.name }}</p>
+          </td>
+          <td>
+            <p class="text-break">{{ user.email }}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="col-sm-12" style="text-align: center" *ngIf="isEmpty">
+      <span>No se encontraron datos...</span>
+    </div>
+  </div>
+</div>

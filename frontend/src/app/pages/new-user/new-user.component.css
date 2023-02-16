@@ -1,0 +1,8 @@
+.FullContent {
+  display: flex;
+  flex-direction: column;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

@@ -1,0 +1,102 @@
+<div class="container mt-5">
+  <div class="row">
+    <!-- 1st Column -->
+    <div class="col-sm-6"></div>
+
+    <!-- 2do Column -->
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <!-- Form -->
+          <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <!-- Name -->
+              <div class="col-sm-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nombre"
+                  formControlName="name"
+                />
+              </div>
+              <!-- Mail -->
+              <div class="col-sm-12 mt-2">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Email"
+                  formControlName="email"
+                />
+              </div>
+              <!-- Password -->
+              <div class="col-sm-12 mt-2">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                  formControlName="password"
+                />
+              </div>
+              <!-- Phones -->
+              <div class="col-sm-12" formArrayName="phones">
+                <div
+                  class="row mt-2"
+                  *ngFor="let phoneCtrl of controls; let i = index"
+                  [formGroupName]="i"
+                >
+                  <div class="col-sm-3">
+                    <input
+                      type="number"
+                      formControlName="countrycode"
+                      class="form-control"
+                      placeholder="# Pais"
+                    />
+                  </div>
+                  <div class="col-sm-3">
+                    <input
+                      type="number"
+                      formControlName="citycode"
+                      class="form-control"
+                      placeholder="# Ciudad"
+                    />
+                  </div>
+                  <div class="col-sm-4">
+                    <input
+                      type="number"
+                      formControlName="number"
+                      class="form-control"
+                      placeholder="# Telefono"
+                    />
+                  </div>
+                  <div class="col-sm-2 FullContent">
+                    <button
+                      (click)="onDeleteUser(i)"
+                      type="button"
+                      class="btn btn-danger"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Add Phone -->
+              <div class="col-sm-12 mt-2 FullContent">
+                <button
+                  type="button"
+                  class="btn btn-outline-success"
+                  (click)="onAddPhone()"
+                >
+                  Adicionar Telefono
+                </button>
+              </div>
+              <!-- Save -->
+              <div class="col-sm-12 mt-2 FullContent">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
