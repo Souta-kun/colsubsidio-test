@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "user")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
@@ -18,18 +20,18 @@ public class UserController {
     @PostMapping("/")
     private ResponseEntity<Customer> saveUser(@RequestBody Customer customer)
     {
-        return new ResponseEntity<>(iCustomerService.Save(customer), HttpStatus.OK);
+        return new ResponseEntity<>(iCustomerService.save(customer), HttpStatus.OK);
     }
 
     @GetMapping("/")
     private ResponseEntity<List<Customer>> get(@RequestParam String name, @RequestParam String email)
     {
-        return new ResponseEntity<>(iCustomerService.GetByParams(name, email).get(), HttpStatus.OK);
+        return new ResponseEntity<>(iCustomerService.getByParams(name, email).get(), HttpStatus.OK);
     }
 
     @GetMapping("/all")
     private ResponseEntity<List<Customer>> getAll()
     {
-        return new ResponseEntity<>(iCustomerService.GetAll(), HttpStatus.OK);
+        return new ResponseEntity<>(iCustomerService.getAll(), HttpStatus.OK);
     }
 }

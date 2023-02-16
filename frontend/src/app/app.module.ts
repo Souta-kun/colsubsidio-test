@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,10 +24,11 @@ import { NewUserComponent } from './pages/new-user/new-user.component';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
+    ToastrModule.forRoot(),
     NgxUiLoaderModule,
   ],
   providers: [],

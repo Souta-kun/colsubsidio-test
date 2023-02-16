@@ -46,11 +46,11 @@ export class NewUserComponent implements OnInit {
   onAddPhone() {
     (<FormArray>this.userForm.get('phones')).push(
       new FormGroup({
-        countrycode: new FormControl(null, [
+        countryCode: new FormControl(null, [
           Validators.required,
           Validators.pattern(/[0-9]/),
         ]),
-        citycode: new FormControl(null, [
+        cityCode: new FormControl(null, [
           Validators.required,
           Validators.pattern(/[0-9]/),
         ]),
@@ -65,7 +65,7 @@ export class NewUserComponent implements OnInit {
   onSubmit() {
     if (this.userForm.invalid) {
       this.userForm.markAllAsTouched();
-      this.toastr.warning('Debe completar los campos resaltados');
+      this.toastr.warning('Debe completar los campos resaltados en rojo.');
       return;
     }
 
@@ -75,10 +75,13 @@ export class NewUserComponent implements OnInit {
       (result) => {
         this.spinner.stop();
         this.userForm.reset();
-        this.toastr.success('Registro Exitoso');
+        this.toastr.success('Registro Exitoso.');
       },
       (error) => {
         this.spinner.stop();
+        this.toastr.error(
+          'Ha ocurrido un error. Consulte con el administrador del sistema.'
+        );
       }
     );
   }

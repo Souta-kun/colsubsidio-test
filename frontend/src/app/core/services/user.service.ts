@@ -1,34 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { UserModel } from '../models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  users: UserModel[];
-
-  constructor() {
-    this.users = [];
-
-    let user = new UserModel(
-      'Carlos',
-      'carls.barrios@gmail.com',
-      'abc1234567',
-      []
-    );
-
-    this.users.push(user);
-  }
+  constructor(private http: HttpClient) {}
 
   addUser(user: UserModel) {
-    this.users.push(user);
-
-    return of('Ok');
+    return this.http.post<UserModel>(`${environment.API}user/`, user);
   }
 
   getUsers(name: string, email: string) {
-    console.log(`name: ${name}`);
-    console.log(`email: ${email}`);
-
-    return of(this.users);
+    return this.http.get<UserModel[]>(`${environment.API}user/all`);
   }
 }

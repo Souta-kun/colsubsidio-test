@@ -1,7 +1,7 @@
 export class PhoneModel {
   constructor(
-    public countrycode: number,
-    public citycode: number,
+    public countryCode: number,
+    public cityCode: number,
     public number: number
   ) {}
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerService {
-    Customer Save(Customer customer);
-    Optional<List<Customer>> GetByParams(String name, String email);
-    List<Customer> GetAll();
+    Customer save(Customer customer);
+    Optional<List<Customer>> getByParams(String name, String email);
+    List<Customer> getAll();
 }
